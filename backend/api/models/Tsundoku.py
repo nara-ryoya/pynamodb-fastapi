@@ -3,12 +3,13 @@ from pynamodb.attributes import (
     NumberAttribute,
     UnicodeAttribute,
     UTCDateTimeAttribute,
+    BinaryAttribute
 )
 from pynamodb.indexes import AllProjection, GlobalSecondaryIndex
 from pynamodb.models import Model
 
 
-class Book(MapAttribute):
+class BookAttribute(MapAttribute):
     author = UnicodeAttribute()
     category = UnicodeAttribute()
     thoughts = UnicodeAttribute()
@@ -34,5 +35,6 @@ class Tsundoku(Model):
 
     user_id = UnicodeAttribute(hash_key=True)
     timestamp = UTCDateTimeAttribute(range_key=True)
-    done = UnicodeAttribute()
+    done = BinaryAttribute()
     done_index = DoneIndex()
+    book: BookAttribute()
