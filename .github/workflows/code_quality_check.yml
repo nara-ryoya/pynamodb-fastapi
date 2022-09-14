@@ -1,0 +1,32 @@
+name: backend
+on: [pull_request]
+jobs:
+  lint:
+    name: lint
+    defaults:
+      run:
+        working-directory: .
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - uses: reviewdog/action-setup@v1
+      with:
+        reviewdog_version: latest
+    - run: pip install --upgrade pip
+    - run: pip install pipenv
+    - run: pipenv install
+    - run: pipenv install --dev
+
+    - name: Code quality checks
+      run: |
+        pipenv run isort .
+        pipenv run black .
+        pipenv run flake8
+        pipenv run mypy
+    - name: apply black & isort & flake8 & mypy
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: apply black & isort & flake8
