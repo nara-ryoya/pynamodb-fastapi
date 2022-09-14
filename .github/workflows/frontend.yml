@@ -1,4 +1,4 @@
-name: frontend_lint
+name: frontend
 on: [pull_request]
 jobs:
   lint:
@@ -14,8 +14,8 @@ jobs:
           node-version: 18
       - run: npm install -D
       - run: | 
-        npm run format
-        npm run lint
+          npm run format
+          npm run lint
       - name: elist & prettier
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
