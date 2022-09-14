@@ -12,6 +12,6 @@ def list_books_by_user_id(user_id: str) -> List[Tsundoku]:
     return []
 
 
-@tsundoku_router.post("/tsundoku", response_model=List[Tsundoku])
-def add_tsundoku(tsundoku: Tsundoku) -> OK:
+@tsundoku_router.post("/tsundoku", response_model=str)
+def add_tsundoku(tsundoku: Tsundoku) -> str:
     return OK

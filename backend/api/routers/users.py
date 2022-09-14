@@ -12,6 +12,6 @@ def list_overall_user() -> List[User]:
     return []
 
 
-@users_router.post("/user", response_model=OK)
-def add_user(user: User) -> OK:
+@users_router.post("/user", response_model=str)
+def add_user(user: User):
     return OK
