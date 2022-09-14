@@ -1,15 +1,9 @@
-from pynamodb.attributes import (
-    MapAttribute,
-    NumberAttribute,
-    UnicodeAttribute,
-    UTCDateTimeAttribute,
-)
+from pynamodb.attributes import MapAttribute, UnicodeAttribute, UTCDateTimeAttribute
 from pynamodb.indexes import AllProjection, GlobalSecondaryIndex
 from pynamodb.models import Model
 
 
 class Book(MapAttribute):
-    counter = NumberAttribute()
     author = UnicodeAttribute()
     category = UnicodeAttribute()
     thoughts = UnicodeAttribute()
