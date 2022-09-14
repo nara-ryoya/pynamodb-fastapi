@@ -1,9 +1,9 @@
 from pynamodb.attributes import (
+    BinaryAttribute,
     MapAttribute,
     NumberAttribute,
     UnicodeAttribute,
     UTCDateTimeAttribute,
-    BinaryAttribute
 )
 from pynamodb.indexes import AllProjection, GlobalSecondaryIndex
 from pynamodb.models import Model
