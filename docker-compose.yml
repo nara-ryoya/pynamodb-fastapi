@@ -1,0 +1,38 @@
+version: "3.8"
+services:
+  backend:
+    depends_on:
+      - dynamodb-local
+    build:
+      context: ./backend
+    tty: true
+    ports:
+      - "8000:8000"
+    volumes:
+      - type: bind
+        source: ./backend
+        target: /app
+
+  dynamodb-local:
+    image: amazon/dynamodb-local:1.19.0
+    user: root
+    command: -jar DynamoDBLocal.jar -sharedDb -dbPath /data -port 8080
+    volumes:
+      - ./dynamodb-local-data:/data
+    ports:
+      - "8080:8080"
+
+  dynamodb-admin:
+    image: aaronshaf/dynamodb-admin:latest
+    environment:
+      - DYNAMO_ENDPOINT=http://dynamodb-local:8080
+    ports:
+      - "8001:8001"
+    tty: true
+    depends_on:
+      - dynamodb-local
+  
+  frontend:
+    build: 
+     context: ./frontend
+
