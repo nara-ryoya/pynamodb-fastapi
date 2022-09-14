@@ -35,4 +35,9 @@ services:
   frontend:
     build: 
      context: ./frontend
-
+    volumes:
+      - type: bind
+        source: ./frontend
+        target: /app
+    ports:
+      - "5173:5173"
