@@ -9,6 +9,8 @@ from pynamodb.models import Model
 
 from .. import schemas
 
+from ..settings import get_settings
+
 
 class BookAttribute(MapAttribute):
     author = UnicodeAttribute()
@@ -46,6 +48,13 @@ class History(Model):
         table_name: str
         region: str
 
+    @classmethod
+    def set_meta(cls) -> None:
+        settings = get_settings()
+        cls.Meta.host = settings.table_host
+        cls.Meta.table_name = settings.table_name
+        cls.Meta.region = settings.region
+    
     hash = UnicodeAttribute(hash_key=True, default=DEFAULT_HASH)
     timestamp = UTCDateTimeAttribute(range_key=True)
     user_id_index = UserIDIndex()

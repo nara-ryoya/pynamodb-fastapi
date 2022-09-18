@@ -8,6 +8,7 @@ fastapi = "*"
 uvicorn = "*"
 pynamodb = "*"
 api = {editable = true, path = "."}
+pydantic = {extras = ["dotenv"], version = "*"}
 
 [dev-packages]
 flake8 = "*"
