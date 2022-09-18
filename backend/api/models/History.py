@@ -1,5 +1,4 @@
 from pynamodb.attributes import (
-    BinaryAttribute,
     MapAttribute,
     NumberAttribute,
     UnicodeAttribute,
@@ -29,33 +28,34 @@ class BookAttribute(MapAttribute):
         )
 
 
-class DoneIndex(GlobalSecondaryIndex):
+class UserIDIndex(GlobalSecondaryIndex):
     class Meta:
-        index_name = "list_by_done"
+        index_name = "list_by_user_id"
         read_capacity_units = 2
         write_capacity_units = 1
         projection = AllProjection()
 
-    done = UnicodeAttribute(hash_key=True)
+    user_id = UnicodeAttribute(hash_key=True)
 
 
-class Tsundoku(Model):
+class History(Model):
+    DEFAULT_HASH = "default"
+
     class Meta:
         host: str
         table_name: str
         region: str
 
-    user_id = UnicodeAttribute(hash_key=True)
+    hash = UnicodeAttribute(hash_key=True, default=DEFAULT_HASH)
     timestamp = UTCDateTimeAttribute(range_key=True)
-    done = BinaryAttribute()
-    done_index = DoneIndex()
+    user_id_index = UserIDIndex()
+    user_id = UnicodeAttribute()
     book = BookAttribute()
 
     @property
-    def schema(self) -> schemas.Tsundoku:
-        return schemas.Tsundoku(
+    def schema(self) -> schemas.History:
+        return schemas.History(
             user_id=self.user_id,
             timestamp=self.timestamp,
-            done=self.done,
             book=self.book.schema,
         )
