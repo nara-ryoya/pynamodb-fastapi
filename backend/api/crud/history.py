@@ -6,9 +6,7 @@ from .. import models, schemas
 
 
 def list_by_user_id(user_id: str) -> ResultIterator[models.History]:
-    return models.History.query(
-        models.History.DEFAULT_HASH, models.History.user_id == user_id
-    )
+    return models.History.user_id_index.query(user_id)
 
 
 def list_by_datetime(
