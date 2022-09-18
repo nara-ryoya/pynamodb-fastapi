@@ -22,6 +22,6 @@ def list_by_datetime(
 
 def add_history(user_id: str, book: schemas.Book) -> None:
     tsundoku = models.History(
-        **schemas.History(user_id=user_id, timestamp=datetime.now(), book=book)
+        **schemas.History(user_id=user_id, timestamp=datetime.now(), book=book).dict()
     )
     tsundoku.save()

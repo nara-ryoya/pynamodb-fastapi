@@ -1,3 +1,3 @@
-from .history import tsundoku_router
+from .history import history_router
 
-__all__ = ["tsundoku_router"]
+__all__ = ["history_router"]
