@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from . import routers, models
+from . import models, routers
 from .settings import get_settings
 
 app = FastAPI()

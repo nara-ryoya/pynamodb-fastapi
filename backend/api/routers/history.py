@@ -1,10 +1,11 @@
 from datetime import datetime
 from typing import List
 
+from dateutil.relativedelta import relativedelta
 from fastapi import APIRouter
 
-from ..schemas import OK, History, Book
 from .. import crud
+from ..schemas import OK, Book, History
 
 history_router = APIRouter()
 
@@ -15,10 +16,15 @@ def list_by_user_id(user_id: str) -> List[History]:
 
 
 @history_router.get("/history", response_model=List[History])
-def list_by_date(start: datetime, end: datetime) -> List[History]:
+def list_by_date(year: int, month: int) -> List[History]:
     return [
         record.schema
-        for record in crud.history.list_by_datetime(start_date=start, end_date=end)
+        for record in crud.history.list_by_datetime(
+            start_date=datetime(year=year, month=month, day=1),
+            end_date=datetime(year=year, month=month, day=1)
+            + relativedelta(months=1)
+            - relativedelta(days=1),
+        )
     ]
 
 

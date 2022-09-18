@@ -1,5 +1,6 @@
 from api.models import History
 from api.settings import get_settings
+
 History.set_meta()
 
 print(History.Meta.host)

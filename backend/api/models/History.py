@@ -8,7 +8,6 @@ from pynamodb.indexes import AllProjection, GlobalSecondaryIndex
 from pynamodb.models import Model
 
 from .. import schemas
-
 from ..settings import get_settings
 
 
@@ -54,7 +53,7 @@ class History(Model):
         cls.Meta.host = settings.table_host
         cls.Meta.table_name = settings.table_name
         cls.Meta.region = settings.region
-    
+
     hash = UnicodeAttribute(hash_key=True, default=DEFAULT_HASH)
     timestamp = UTCDateTimeAttribute(range_key=True)
     user_id_index = UserIDIndex()
