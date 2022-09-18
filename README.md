@@ -24,12 +24,12 @@ docker compose backend exec python db/insert_random_record.py # テーブルに�
 
 ### DBテーブルの確認
 
-http://localhost:8001をブラウザで開くことで、テーブルを確認することができる。
+[http://localhost:8001](http://localhost:8001)をブラウザで開くことで、テーブルを確認することができる。
 
 
 ### エンドポイントの確認
 
-http://localhost:8000/docsによって、各エンドポイントの動作確認をすることができる。
+[http://localhost:8000/docs](http://localhost:8000/docs)から、各エンドポイントの動作確認をすることができる。
 
 
 ## AWS本番環境で使うには
