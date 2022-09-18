@@ -9,6 +9,7 @@ uvicorn = "*"
 pynamodb = "*"
 api = {editable = true, path = "."}
 pydantic = {extras = ["dotenv"], version = "*"}
+boto3 = "*"
 
 [dev-packages]
 flake8 = "*"

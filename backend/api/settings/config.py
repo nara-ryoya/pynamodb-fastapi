@@ -8,6 +8,7 @@ class Config(BaseSettings):
     table_name: str
     table_host: str
     region: str
+    aws_profile: str
     
     class Config:
         env_file = ".env.development"
