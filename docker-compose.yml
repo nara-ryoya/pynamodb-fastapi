@@ -12,6 +12,12 @@ services:
       - type: bind
         source: ./backend
         target: /app
+      - type: bind
+        read_only: true
+        source: ./backend/.aws/
+        target: /root/.aws
+    environment:
+      - AWS_PROFILE=local
 
   dynamodb-local:
     image: amazon/dynamodb-local:1.19.0

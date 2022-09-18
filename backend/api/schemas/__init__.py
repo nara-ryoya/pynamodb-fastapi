@@ -1,7 +1,6 @@
 from .Book import Book
-from .Tsundoku import Tsundoku
-from .User import User
+from .History import History
 
 OK = "ok"
 
-__all__ = ["User", "Book", "Tsundoku", "OK"]
+__all__ = ["Book", "History", "OK"]

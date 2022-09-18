@@ -5,8 +5,7 @@ from pydantic import BaseModel
 from .Book import Book
 
 
-class Tsundoku(BaseModel):
+class History(BaseModel):
     user_id: str
     timestamp: datetime
-    done: bool
     book: Book
