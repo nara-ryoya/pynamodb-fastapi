@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 
 from . import models, routers
-from .settings import get_settings
 
 app = FastAPI()
 app.include_router(routers.history_router)

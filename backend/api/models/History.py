@@ -14,8 +14,9 @@ from ..settings import get_settings
 class BookAttribute(MapAttribute):
     author = UnicodeAttribute()
     category = UnicodeAttribute()
+    title = UnicodeAttribute()
     thoughts = UnicodeAttribute()
-    link = UnicodeAttribute()
+    link = UnicodeAttribute(null=True)
     price = NumberAttribute()
 
     @property
@@ -24,6 +25,7 @@ class BookAttribute(MapAttribute):
             author=self.author,
             category=self.category,
             thoughts=self.thoughts,
+            title=self.title,
             link=self.link,
             price=self.price,
         )
