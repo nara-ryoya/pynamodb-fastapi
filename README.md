@@ -29,9 +29,13 @@ http://localhost:8001をブラウザで開くことで、テーブルを確認�
 
 ### エンドポイントの確認
 
-http://localhost:8000/docsをブラウザで開くことで、各エンドポイントを確認することができる。
+http://localhost:8000/docsによって、各エンドポイントの動作確認をすることができる。
 
 
 ## AWS本番環境で使うには
 
 `backend/.aws`以下に正しい設定をするか、適切にコンテナにマウントの設定をすることで、AWS本番環境のDynamoDBに対するテーブルの作成・レコードの挿入・CRUD操作ができる。
+
+## CI
+
+mainブランチに対するPRに対して、frontend, backendでそれぞれgithub actionsによってCIを実行している。
